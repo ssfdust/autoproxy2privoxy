@@ -33,9 +33,9 @@ about how to build the Privoxy forward rules from an AutoProxy ruleset.
 The following example assumes a Linux environment. Also the famous gfwlist is
 used as the autoproxy ruleset input in the example below.
 
-    gfwlist=https://autoproxy-gfwlist.googlecode.com/svn/trunk/gfwlist.txt
+    gfwlist=https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt
     wget -qO- "${gfwlist}" | base64 -d > gfwlist.txt
-    export PROXY_ADDR=127.0.0.1:7127 PROXY_TYPE=SOCKS5
+    export PROXY_ADDR=127.0.0.1:1080 PROXY_TYPE=SOCKS5
     chmod +x autoproxy2privoxy
     ./autoproxy2privoxy gfwlist.txt > gfw.action
 
@@ -50,7 +50,7 @@ platform to platform. The following assumes a Linux environment.
 First, make sure the address and type of the target proxy is set correctly in
 [gfw.action](https://github.com/cckpg/autoproxy2privoxy/raw/master/gfw.action):
 
-    {+forward-override{forward-socks5 127.0.0.1:7127 .}}
+    {+forward-override{forward-socks5 127.0.0.1:1080 .}}
 
 Then issue the following commands as root:
 
